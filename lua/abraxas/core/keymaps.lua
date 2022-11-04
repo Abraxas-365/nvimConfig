@@ -25,7 +25,7 @@ keymap.set("n", "<leader>wk", "<C-w>k") -- toggle full
 --buffer
 keymap.set("n", "<leader>bk", ":bd!<CR>") -- toggle full
 
-keymap.set("n", "<leader>,<CR>", "<C-^>")
+-- keymap.set("n", "<leader>,<CR>", "<C-^>")
 keymap.set("n", "<leader>bn", ":bnext<CR>")
 keymap.set("n", "<leader>bp", ":bprev<CR>")
 
@@ -38,6 +38,8 @@ keymap.set("n", "<leader>op", ":CHADopen<CR>") -- toggle full
 --telescope
 
 keymap.set("n", "<leader>.", "<cmd>Telescope find_files<Cr>") -- toggle full
+keymap.set("n", "<leader>,", "<cmd>Telescope oldfiles<Cr>") -- toggle full
+keymap.set("n", "<leader>:", "<cmd>Telescope commands<Cr>") -- toggle full
 keymap.set("n", "<leader><leader>", "<cmd>Telescope buffers<Cr>") --  buffers
 keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<Cr>") -- toggle full
 

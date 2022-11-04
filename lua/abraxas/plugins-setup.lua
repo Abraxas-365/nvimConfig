@@ -54,6 +54,7 @@ return packer.startup(function(use)
     end,
   })
   use("akinsho/toggleterm.nvim")
+  use("ggandor/leap.nvim") --jump fastr
   use("nvim-lua/plenary.nvim")
   use("wbthomason/packer.nvim")
   use("shaunsingh/nord.nvim")
