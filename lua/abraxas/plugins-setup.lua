@@ -65,9 +65,13 @@ return packer.startup(function(use)
   use("tpope/vim-surround")
   -- comments
   use("numToStr/Comment.nvim")
+
   --explorer
-  use("nvim-tree/nvim-tree.lua")
+  -- use({ "nvim-telescope/telescope-file-browser.nvim" })
+  -- use("nvim-tree/nvim-tree.lua")
+  use({ "ms-jpq/chadtree", branch = "chad", run = "python3 -m chadtree deps" })
   --icons
+  --
   use("ryanoasis/vim-devicons")
   use("kyazdani42/nvim-web-devicons")
 
@@ -78,9 +82,14 @@ return packer.startup(function(use)
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
   use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
   -- autocompletion
-  use("hrsh7th/nvim-cmp") -- completion plugin
+  use("hrsh7th/nvim-cmp") --completion
   use("hrsh7th/cmp-buffer") -- source for text in buffer
   use("hrsh7th/cmp-path") -- source for file system paths
+  use({
+    "tzachar/cmp-tabnine",
+    run = "./install.sh",
+    requires = "hrsh7th/nvim-cmp",
+  })
   -- snippets
   use("L3MON4D3/LuaSnip") -- snippet engine
   use("saadparwaiz1/cmp_luasnip") -- for autocompletion
@@ -118,6 +127,8 @@ return packer.startup(function(use)
   --golang
   use("ray-x/go.nvim")
   use("ray-x/guihua.lua")
+  --jsx-tsx
+
   if packer_bootstrap then
     require("packer").sync()
   end

@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  chadtree = {
+    loaded = true,
+    path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/chadtree",
+    url = "https://github.com/ms-jpq/chadtree"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -98,6 +103,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
+  },
+  ["cmp-tabnine"] = {
+    loaded = true,
+    path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
+    url = "https://github.com/tzachar/cmp-tabnine"
   },
   cmp_luasnip = {
     loaded = true,
@@ -183,11 +193,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
-  },
-  ["nvim-tree.lua"] = {
-    loaded = true,
-    path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
-    url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
