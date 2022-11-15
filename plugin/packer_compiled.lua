@@ -84,11 +84,6 @@ _G.packer_plugins = {
     path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  chadtree = {
-    loaded = true,
-    path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/chadtree",
-    url = "https://github.com/ms-jpq/chadtree"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -107,7 +102,7 @@ _G.packer_plugins = {
   ["cmp-tabnine"] = {
     loaded = true,
     path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
-    url = "https://github.com/tzachar/cmp-tabnine"
+    url = "https://github.com/tabnine/cmp-tabnine"
   },
   cmp_luasnip = {
     loaded = true,
@@ -128,6 +123,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/go.nvim",
     url = "https://github.com/ray-x/go.nvim"
+  },
+  gruvbox = {
+    loaded = true,
+    path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/gruvbox",
+    url = "https://github.com/morhetz/gruvbox"
+  },
+  ["gruvbox-material"] = {
+    loaded = true,
+    path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/gruvbox-material",
+    url = "https://github.com/sainnhe/gruvbox-material"
   },
   ["guihua.lua"] = {
     loaded = true,
@@ -174,6 +179,11 @@ _G.packer_plugins = {
     path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["nightfox.nvim"] = {
+    loaded = true,
+    path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
+    url = "https://github.com/EdenEast/nightfox.nvim"
+  },
   ["nord.nvim"] = {
     loaded = true,
     path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/nord.nvim",
@@ -194,10 +204,20 @@ _G.packer_plugins = {
     path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+    url = "https://github.com/norcalli/nvim-colorizer.lua"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -240,6 +260,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["typescript.nvim"] = {
     loaded = true,

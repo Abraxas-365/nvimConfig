@@ -35,7 +35,7 @@ local on_attach = function(client, bufnr)
   keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
   keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
   keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
-  keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
+  -- keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
 
   -- typescript specific keymaps (e.g. rename file and update imports)
   if client.name == "tsserver" then
@@ -44,6 +44,18 @@ local on_attach = function(client, bufnr)
     keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
   end
 end
+
+-- -- 300ms of no cursor movement to trigger CursorHold
+-- vim.opt.updatetime = 100
+--
+-- -- Show diagnostic popup on cursor hover
+-- local diag_float_grp = vim.api.nvim_create_augroup("DiagnosticFloat", { clear = true })
+-- vim.api.nvim_create_autocmd("CursorHold", {
+--   callback = function()
+--     vim.diagnostic.open_float(nil, { focusable = false })
+--   end,
+--   group = diag_float_grp,
+-- })
 
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -90,10 +102,33 @@ lspconfig["gopls"].setup({
 
 -- rust
 lspconfig["rust_analyzer"].setup({
+  checkOnSave = {
+    command = "clippy",
+  },
   capabilities = capabilities,
   on_attach = on_attach,
 })
 
+-- require("rust-tools").setup({
+--   tools = {
+--     runnables = {
+--       use_telescope = true,
+--     },
+--     inlay_hints = {
+--       auto = true,
+--       show_parameter_hints = false,
+--       parameter_hints_prefix = "",
+--       other_hints_prefix = "",
+--     },
+--   },
+-- })
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.rs",
+  callback = function()
+    vim.lsp.buf.formatting_sync(nil, 200)
+  end,
+  group = format_sync_grp,
+})
 -- py
 lspconfig["pylsp"].setup({
   capabilities = capabilities,
@@ -151,6 +186,7 @@ lspconfig["sumneko_lua"].setup({
   },
 })
 
+--lsp signature
 local cfg = {
   debug = false, -- set to true to enable debug logging
   log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log", -- log dir when debug is on

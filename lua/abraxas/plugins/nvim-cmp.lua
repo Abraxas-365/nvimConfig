@@ -43,7 +43,7 @@ cmp.setup({
   }),
   -- sources for autocompletion
   sources = cmp.config.sources({
-    -- { name = "cmp_tabnine" },
+    { name = "cmp_tabnine" },
     { name = "nvim_lsp", max_item_count = 20 }, -- lsp
     { name = "luasnip", max_item_count = 10 }, -- snippets
     { name = "buffer", max_item_count = 10 }, -- text within current buffer
@@ -71,4 +71,14 @@ cmp.setup({
   window = {
     completion = { pumheight = 5 },
   },
+})
+local tabnine = require("cmp_tabnine.config")
+
+tabnine:setup({
+  max_lines = 1000,
+  max_num_results = 20,
+  sort = true,
+  priority = 5000,
+  show_prediction_strength = true,
+  run_on_every_keystroke = true,
 })

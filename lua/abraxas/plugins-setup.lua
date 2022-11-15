@@ -53,11 +53,16 @@ return packer.startup(function(use)
       }
     end,
   })
+  use("norcalli/nvim-colorizer.lua")
   use("akinsho/toggleterm.nvim")
   use("ggandor/leap.nvim") --jump fastr
   use("nvim-lua/plenary.nvim")
   use("wbthomason/packer.nvim")
   use("shaunsingh/nord.nvim")
+  use("sainnhe/gruvbox-material")
+  use("morhetz/gruvbox")
+  use("EdenEast/nightfox.nvim")
+  use("folke/tokyonight.nvim")
   --   use("christoomey/vim-tmux-navigator")
   use("szw/vim-maximizer")
   use("ray-x/lsp_signature.nvim")
@@ -68,11 +73,8 @@ return packer.startup(function(use)
   use("numToStr/Comment.nvim")
 
   --explorer
-  -- use({ "nvim-telescope/telescope-file-browser.nvim" })
-  -- use("nvim-tree/nvim-tree.lua")
-  use({ "ms-jpq/chadtree", branch = "chad", run = "python3 -m chadtree deps" })
+  use("nvim-tree/nvim-tree.lua")
   --icons
-  --
   use("ryanoasis/vim-devicons")
   use("kyazdani42/nvim-web-devicons")
 
@@ -83,11 +85,12 @@ return packer.startup(function(use)
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
   use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
   -- autocompletion
+  --
   use("hrsh7th/nvim-cmp") --completion
   use("hrsh7th/cmp-buffer") -- source for text in buffer
   use("hrsh7th/cmp-path") -- source for file system paths
   use({
-    "tzachar/cmp-tabnine",
+    "tabnine/cmp-tabnine",
     run = "./install.sh",
     requires = "hrsh7th/nvim-cmp",
   })
@@ -128,8 +131,8 @@ return packer.startup(function(use)
   --golang
   use("ray-x/go.nvim")
   use("ray-x/guihua.lua")
-  --jsx-tsx
-
+  --rust
+  -- use("simrat39/rust-tools.nvim")
   if packer_bootstrap then
     require("packer").sync()
   end

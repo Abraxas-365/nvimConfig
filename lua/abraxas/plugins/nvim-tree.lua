@@ -12,26 +12,34 @@ vim.g.loaded_netrwPlugin = 1
 
 -- configure nvim-tree
 nvimtree.setup({
+  sort_by = "case_sensitive",
+  view = {
+    float = {
+      enable = true,
+      open_win_config = {
+        relative = "editor",
+        border = "rounded",
+        width = 30,
+        height = 30,
+        row = 1,
+        col = 1,
+      },
+    },
 
-  -- change folder arrow icons
-  renderer = {
-    icons = {
-      glyphs = {
-        folder = {
-          arrow_closed = "", -- arrow when folder is closed
-          arrow_open = "", -- arrow when folder is open
-        },
+    adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+        { key = "b", action = "cd" },
       },
     },
   },
-  -- disable window_picker for
-  -- explorer to work well with
-  -- window splits
-  actions = {
-    open_file = {
-      window_picker = {
-        enable = false,
-      },
-    },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = false,
+    custom = { ".DS_Store", "DS_Store" },
+    exclude = {},
   },
 })

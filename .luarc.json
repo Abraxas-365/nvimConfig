@@ -3,6 +3,7 @@
     "Lua.diagnostics.globals": [
         "vim",
         "local",
-        "CR"
+        "CR",
+        "format_sync_grp"
     ]
 }

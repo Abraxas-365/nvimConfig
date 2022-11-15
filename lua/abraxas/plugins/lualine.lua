@@ -8,7 +8,7 @@ if not status then
 end
 
 -- get lualine nightfly theme
-local nord = require("lualine.themes.nord")
+local nord = require("lualine.themes.gruvbox")
 
 -- local function current_signature()
 --   if not pcall(require, "lsp_signature") then
@@ -44,7 +44,7 @@ local nord = require("lualine.themes.nord")
 
 local custom_fname = require("lualine.components.filename"):extend()
 local highlight = require("lualine.highlight")
-local default_status_colors = { saved = "#8CA47D", modified = "#BC636C" }
+local default_status_colors = { saved = "#92BE82", modified = "#F45037" }
 
 function custom_fname:init(options)
   custom_fname.super.init(self, options)

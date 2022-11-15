@@ -33,14 +33,14 @@ keymap.set("n", "<leader>bp", ":bprev<CR>")
 
 keymap.set("t", "<leader>ot", ":ToggleTerm size=15  direction=horizontal<CR>")
 keymap.set("n", "<leader>ot", ":ToggleTerm size=15  direction=horizontal<CR>")
-keymap.set("n", "<leader>op", ":CHADopen<CR>") -- toggle full
+keymap.set("n", "<leader>op", ":NvimTreeToggle<CR>") -- toggle full
 
 --telescope
 
-keymap.set("n", "<leader>.", "<cmd>Telescope find_files<Cr>") -- toggle full
+keymap.set("n", "<leader><leader>", "<cmd>Telescope find_files<Cr>") -- toggle full
 keymap.set("n", "<leader>,", "<cmd>Telescope oldfiles<Cr>") -- toggle full
 keymap.set("n", "<leader>:", "<cmd>Telescope commands<Cr>") -- toggle full
-keymap.set("n", "<leader><leader>", "<cmd>Telescope buffers<Cr>") --  buffers
+keymap.set("n", "<leader>.", "<cmd>Telescope buffers<Cr>") --  buffers
 keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<Cr>") -- toggle full
 
 keymap.set("n", "<esc>", ":noh<CR><esc>")
