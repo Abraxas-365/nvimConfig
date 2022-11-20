@@ -4,6 +4,8 @@
         "vim",
         "local",
         "CR",
-        "format_sync_grp"
+        "format_sync_grp",
+        "au",
+        "ag"
     ]
 }

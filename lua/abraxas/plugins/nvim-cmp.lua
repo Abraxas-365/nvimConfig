@@ -76,7 +76,7 @@ local tabnine = require("cmp_tabnine.config")
 
 tabnine:setup({
   max_lines = 1000,
-  max_num_results = 20,
+  max_num_results = 3,
   sort = true,
   priority = 5000,
   show_prediction_strength = true,

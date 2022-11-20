@@ -19,16 +19,6 @@ end
 
 local packer_bootstrap = ensure_packer() -- true if packer was just installed
 
-local signature_config = {
-  log_path = vim.fn.expand("$HOME") .. "/tmp/sig.log",
-  debug = true,
-  hint_enable = false,
-  handler_opts = { border = "single" },
-  max_width = 80,
-}
-
-require("lsp_signature").setup(signature_config)
-require("lsp_signature").status_line(signature_config.max_width)
 -- when file is saved
 vim.cmd([[
   augroup packer_user_config
