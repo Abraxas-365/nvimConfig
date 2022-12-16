@@ -24,6 +24,7 @@ keymap.set("n", "<leader>wk", "<C-w>k") -- toggle full
 
 --buffer
 keymap.set("n", "<leader>bk", ":bd!<CR>") -- toggle full
+keymap.set("n", "<leader>bq", ":q!<CR>") -- toggle full
 
 -- keymap.set("n", "<leader>,<CR>", "<C-^>")
 keymap.set("n", "<leader>bn", ":bnext<CR>")
