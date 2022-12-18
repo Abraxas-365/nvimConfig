@@ -72,13 +72,13 @@ cmp.setup({
     completion = { pumheight = 5 },
   },
 })
-local tabnine = require("cmp_tabnine.config")
-
-tabnine:setup({
-  max_lines = 1000,
-  max_num_results = 3,
-  sort = true,
-  priority = 5000,
-  show_prediction_strength = true,
-  run_on_every_keystroke = true,
-})
+-- local tabnine = require("cmp_tabnine.config")
+--
+-- tabnine:setup({
+--   max_lines = 1000,
+--   max_num_results = 3,
+--   sort = true,
+--   priority = 5000,
+--   show_prediction_strength = true,
+--   run_on_every_keystroke = true,
+-- })

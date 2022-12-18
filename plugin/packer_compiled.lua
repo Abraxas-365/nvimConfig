@@ -99,11 +99,6 @@ _G.packer_plugins = {
     path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
-  ["cmp-tabnine"] = {
-    loaded = true,
-    path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
-    url = "https://github.com/tabnine/cmp-tabnine"
-  },
   cmp_luasnip = {
     loaded = true,
     path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
@@ -292,7 +287,7 @@ _G.packer_plugins = {
     url = "https://github.com/tpope/vim-surround"
   },
   ["vim-visual-multi"] = {
-    config = { "\27LJ\2\nV\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\0\2\23Find Subword Under\n<C-d>\15Find Under\n<C-d>\fVM_maps\6g\bvim\0" },
+    config = { "\27LJ\2\nV\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\0\2\15Find Under\n<C-d>\23Find Subword Under\n<C-d>\fVM_maps\6g\bvim\0" },
     loaded = true,
     path = "/Users/abraxas/.local/share/nvim/site/pack/packer/start/vim-visual-multi",
     url = "https://github.com/mg979/vim-visual-multi"
@@ -302,7 +297,7 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: vim-visual-multi
 time([[Config for vim-visual-multi]], true)
-try_loadstring("\27LJ\2\nV\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\0\2\23Find Subword Under\n<C-d>\15Find Under\n<C-d>\fVM_maps\6g\bvim\0", "config", "vim-visual-multi")
+try_loadstring("\27LJ\2\nV\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\0\2\15Find Under\n<C-d>\23Find Subword Under\n<C-d>\fVM_maps\6g\bvim\0", "config", "vim-visual-multi")
 time([[Config for vim-visual-multi]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)

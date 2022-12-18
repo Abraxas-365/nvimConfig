@@ -1,4 +1,4 @@
-vim.cmd("so ./lua/abraxas/plugins-setup.lua")
+vim.cmd("so ~/.config/nvim/lua/abraxas/plugins-setup.lua")
 require("abraxas.core.options")
 require("abraxas.core.keymaps")
 require("abraxas.core.colorscheme")
