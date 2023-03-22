@@ -29,5 +29,5 @@ vim.cmd([[set noswapfile]])
 vim.cmd([[set nobackup]])
 vim.cmd([[set undodir=~/.vim/undodir]])
 vim.cmd([[set undofile]])
-vim.cmd([[set scrolloff=15]])
+vim.cmd([[set scrolloff=10]])
 opt.background = "dark"

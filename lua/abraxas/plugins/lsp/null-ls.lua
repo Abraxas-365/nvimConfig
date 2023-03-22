@@ -17,7 +17,22 @@ null_ls.setup({
   sources = {
     --  to disable file types use
     -- formatting.prettier.with({disabled_filetypes: {}}), --(see null-ls docs)
-    formatting.prettier.with({ extra_args = { "--print-width", "220" } }), -- js/ts formatter
+    -- formatting.prettier.with({
+    --   extra_args = { "--print-width", "80" },
+    --   filetypes = {
+    --     "html",
+    --     "json",
+    --     "svelte",
+    --     "markdown",
+    --     "css",
+    --     "javascript",
+    --     "javascriptreact",
+    --     "typescript",
+    --     "typescriptreact",
+    --   },
+    -- }), -- js/ts formatter
+    formatting.prettier,
+    formatting.phpcsfixer.with({ exta_args = { "--rules", "@Symfony" } }), --php foter
     formatting.stylua, -- lua formatter
     diagnostics.eslint_d.with({ -- js/ts linter
       -- only enable eslint if root has .eslintrc.js

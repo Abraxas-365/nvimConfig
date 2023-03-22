@@ -17,6 +17,7 @@ local source_mapping = {
   buffer = "[Buffer]",
   nvim_lsp = "[LSP]",
   nvim_lua = "[Lua]",
+  copilot = "[COP]",
   cmp_tabnine = "[T9]",
   path = "[Path]",
   luasnip = "[SNP]",
@@ -26,6 +27,9 @@ require("luasnip/loaders/from_vscode").lazy_load()
 vim.opt.completeopt = "menu,menuone,noselect"
 
 cmp.setup({
+
+  completion = { completeopt = "noselect" },
+  preselect = cmp.PreselectMode.None,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -37,15 +41,16 @@ cmp.setup({
     ["<Tab>"] = cmp.mapping.select_next_item(), -- next suggestion
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
+    -- ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
     ["<C-e>"] = cmp.mapping.abort(), -- close completion window
     ["<CR>"] = cmp.mapping.confirm({ select = false }),
   }),
   -- sources for autocompletion
   sources = cmp.config.sources({
-    { name = "cmp_tabnine" },
-    { name = "nvim_lsp", max_item_count = 20 }, -- lsp
-    { name = "luasnip", max_item_count = 10 }, -- snippets
+    { name = "cmp_tabnine", score = 3 },
+    { name = "copilot", max_item_count = 3, score = 8 },
+    { name = "nvim_lsp", max_item_count = 20, score = 2 }, -- lsp
+    { name = "luasnip", max_item_count = 10, score = 3 }, -- snippets
     { name = "buffer", max_item_count = 10 }, -- text within current buffer
     { name = "path" }, -- file system paths
   }),
@@ -62,6 +67,9 @@ cmp.setup({
         if detail and detail:find(".*%%.*") then
           vim_item.kind = vim_item.kind .. " " .. detail
         end
+      end
+      if entry.source.name == "copilot" then
+        vim_item.kind = ""
       end
       local maxwidth = 50
       vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
@@ -82,3 +90,7 @@ tabnine:setup({
   show_prediction_strength = true,
   run_on_every_keystroke = true,
 })
+
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
+vim.g.copilot_tab_fallback = ""

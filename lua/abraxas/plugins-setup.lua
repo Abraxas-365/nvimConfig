@@ -52,6 +52,18 @@ return packer.startup(function(use)
   use("sainnhe/gruvbox-material")
   use("morhetz/gruvbox")
   use("EdenEast/nightfox.nvim")
+
+  use({
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end,
+  })
   use("folke/tokyonight.nvim")
   --   use("christoomey/vim-tmux-navigator")
   use("szw/vim-maximizer")
@@ -84,6 +96,13 @@ return packer.startup(function(use)
     run = "./install.sh",
     requires = "hrsh7th/nvim-cmp",
   })
+  use({
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  })
   -- snippets
   use("L3MON4D3/LuaSnip") -- snippet engine
   use("saadparwaiz1/cmp_luasnip") -- for autocompletion
@@ -100,6 +119,7 @@ return packer.startup(function(use)
   use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
   -- formatting & linting
+  use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
   use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
   use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
   -- treesitter configuration
@@ -123,6 +143,12 @@ return packer.startup(function(use)
   use("ray-x/guihua.lua")
   --rust
   -- use("simrat39/rust-tools.nvim")
+  --git
+  use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+
+  --svelte
+  use("evanleck/vim-svelte")
+
   if packer_bootstrap then
     require("packer").sync()
   end

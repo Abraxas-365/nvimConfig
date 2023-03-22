@@ -1,9 +1,19 @@
 vim.g.mapleader = " "
 
 local keymap = vim.keymap
+vim.o.foldcolumn = "1" -- '0' is not bad
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
 
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
+vim.g.copilot_tab_fallback = ""
+
+keymap.set("n", "zR", require("ufo").openAllFolds)
+keymap.set("n", "zM", require("ufo").closeAllFolds)
 keymap.set("n", "<leader>fs", ":w<CR>")
-
+keymap.set("n", "<leader>,<CR>", "<C-^>")
 --random
 -- keymap.set("n", "x", '"_x"') --copiar linea y pegarla
 
@@ -39,7 +49,7 @@ keymap.set("n", "<leader>op", ":NvimTreeToggle<CR>") -- toggle full
 --telescope
 
 keymap.set("n", "<leader><leader>", "<cmd>Telescope find_files<Cr>") -- toggle full
-keymap.set("n", "<leader>,", "<cmd>Telescope oldfiles<Cr>") -- toggle full
+keymap.set("n", "<leader>;", "<cmd>Telescope oldfiles<Cr>") -- toggle full
 keymap.set("n", "<leader>:", "<cmd>Telescope commands<Cr>") -- toggle full
 keymap.set("n", "<leader>.", "<cmd>Telescope buffers<Cr>") --  buffers
 keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<Cr>") -- toggle full

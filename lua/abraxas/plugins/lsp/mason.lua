@@ -26,11 +26,11 @@ mason_lspconfig.setup({
     "html",
     "cssls",
     "tailwindcss",
-    "sumneko_lua",
+    "lua_ls",
     "gopls",
     "rust_analyzer",
     "pylsp",
-    "solc",
+    "solidity",
     "svelte",
     "yamlls",
     "jsonls",
@@ -47,6 +47,7 @@ mason_null_ls.setup({
     "prettier", -- ts/js formatter
     "stylua", -- lua formatter
     "eslint_d", -- ts/js linter
+    "phpcsfixer", --php formatter
   },
   -- auto-install configured formatters & linters (with null-ls)
   automatic_installation = true,

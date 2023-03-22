@@ -1,23 +1,10 @@
-vim.cmd("so ./lua/abraxas/plugins-setup.lua")
-require("abraxas.core.options")
-require("abraxas.core.keymaps")
-require("abraxas.core.colorscheme")
-require("abraxas.plugins-setup")
-require("abraxas.plugins.comment")
-require("abraxas.plugins.nvim-tree")
-require("abraxas.plugins.lualine")
-require("abraxas.plugins.telescope")
-require("abraxas.plugins.nvim-cmp")
-require("abraxas.plugins.lsp.mason")
-require("abraxas.plugins.lsp.lspsaga")
-require("abraxas.plugins.lsp.lspconfig")
-require("abraxas.plugins.lsp.null-ls")
-require("abraxas.plugins.lsp.lsp_signature")
-require("abraxas.plugins.autopairs")
-require("abraxas.plugins.treesitter")
-require("abraxas.plugins.gitsigns")
-require("abraxas.plugins.go-nvim")
-require("abraxas.plugins.js-ts-nvimlf")
-require("abraxas.plugins.toggle-term")
-require("abraxas.plugins.leap")
-require("abraxas.plugins.colorizer")
+-- Get the environment variable for the desired configuration
+local config_to_load = os.getenv("MY_NEOVIM_CONFIG")
+
+if config_to_load == "config1" then
+  require("abraxas.minimal_config")
+elseif config_to_load == "config2" then
+else
+  -- Default configuration (your current configuration)
+  require("abraxas.defult_config")
+end
