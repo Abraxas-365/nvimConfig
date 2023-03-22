@@ -1,0 +1,19 @@
+# .gitignore
+
+# Neovim swap, undo, and backup files
+*.swp
+*.swo
+*.undo
+*.backup
+
+# Neovim temp files
+*.tmp
+
+# Neovim session files
+Session.vim
+
+# Packer compiled file
+plugin/packer_compiled.lua
+
+# Packer installation directory
+pack/
