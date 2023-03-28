@@ -156,6 +156,11 @@ lspconfig["svelte"].setup({
 lspconfig["yamlls"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
+  settings = {
+    yaml = {
+      keyOrdering = false,
+    },
+  },
 })
 
 --json
