@@ -30,7 +30,7 @@ local on_attach = function(client, bufnr)
   keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
   keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
   keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
-  keymap.set("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
+  keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
   keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
   keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
   keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
@@ -44,18 +44,6 @@ local on_attach = function(client, bufnr)
     keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
   end
 end
-
--- -- 300ms of no cursor movement to trigger CursorHold
--- vim.opt.updatetime = 100
---
--- -- Show diagnostic popup on cursor hover
--- local diag_float_grp = vim.api.nvim_create_augroup("DiagnosticFloat", { clear = true })
--- vim.api.nvim_create_autocmd("CursorHold", {
---   callback = function()
---     vim.diagnostic.open_float(nil, { focusable = false })
---   end,
---   group = diag_float_grp,
--- })
 
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -72,6 +60,14 @@ for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
+-- Configure diagnostics display
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+  vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    signs = true,
+    update_in_insert = true,
+    virtual_text = false, -- Disable virtual text
+  })
 
 -- configure html server
 lspconfig["html"].setup({

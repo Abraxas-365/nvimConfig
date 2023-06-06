@@ -95,7 +95,10 @@ lualine.setup({
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = { "branch", "diagnostics" },
+    lualine_b = {
+      "branch",
+      "diagnostics",
+    },
     lualine_c = { { custom_fname, path = 1 } },
     lualine_x = { "encoding", "filetype" },
     lualine_y = { "progress" },

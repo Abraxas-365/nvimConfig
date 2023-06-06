@@ -18,7 +18,6 @@ local source_mapping = {
   nvim_lsp = "[LSP]",
   nvim_lua = "[Lua]",
   copilot = "[COP]",
-  cmp_tabnine = "[T9]",
   path = "[Path]",
   luasnip = "[SNP]",
 }
@@ -27,8 +26,11 @@ require("luasnip/loaders/from_vscode").lazy_load()
 vim.opt.completeopt = "menu,menuone,noselect"
 
 cmp.setup({
+  completion = {
+    completeopt = "noselect",
+    autocomplete = false, -- make sure completion is manual
+  },
 
-  completion = { completeopt = "noselect" },
   preselect = cmp.PreselectMode.None,
   snippet = {
     expand = function(args)
@@ -39,6 +41,7 @@ cmp.setup({
     ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
     ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
     ["<Tab>"] = cmp.mapping.select_next_item(), -- next suggestion
+    ["<C-d>"] = cmp.mapping.complete(),
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     -- ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
@@ -47,9 +50,8 @@ cmp.setup({
   }),
   -- sources for autocompletion
   sources = cmp.config.sources({
-    { name = "cmp_tabnine", score = 3 },
     { name = "copilot", max_item_count = 3, score = 8 },
-    { name = "nvim_lsp", max_item_count = 20, score = 2 }, -- lsp
+    { name = "nvim_lsp", max_item_count = 20, score = 5 }, -- lsp
     { name = "luasnip", max_item_count = 10, score = 3 }, -- snippets
     { name = "buffer", max_item_count = 10 }, -- text within current buffer
     { name = "path" }, -- file system paths
@@ -61,13 +63,6 @@ cmp.setup({
       -- in the following line:
       vim_item.kind = lspkind.symbolic(vim_item.kind, { mode = "symbol" })
       vim_item.menu = source_mapping[entry.source.name]
-      if entry.source.name == "cmp_tabnine" then
-        local detail = (entry.completion_item.data or {}).detail
-        vim_item.kind = ""
-        if detail and detail:find(".*%%.*") then
-          vim_item.kind = vim_item.kind .. " " .. detail
-        end
-      end
       if entry.source.name == "copilot" then
         vim_item.kind = ""
       end
@@ -79,16 +74,6 @@ cmp.setup({
   window = {
     completion = { pumheight = 5 },
   },
-})
-local tabnine = require("cmp_tabnine.config")
-
-tabnine:setup({
-  max_lines = 1000,
-  max_num_results = 3,
-  sort = true,
-  priority = 5000,
-  show_prediction_strength = true,
-  run_on_every_keystroke = true,
 })
 
 vim.g.copilot_no_tab_map = true

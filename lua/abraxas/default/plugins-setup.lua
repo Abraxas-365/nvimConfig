@@ -45,13 +45,11 @@ return packer.startup(function(use)
   })
   use("norcalli/nvim-colorizer.lua")
   use("akinsho/toggleterm.nvim")
-  use("ggandor/leap.nvim") --jump fastr
   use("nvim-lua/plenary.nvim")
   use("wbthomason/packer.nvim")
-  use("shaunsingh/nord.nvim")
   use("sainnhe/gruvbox-material")
   use("morhetz/gruvbox")
-  use("EdenEast/nightfox.nvim")
+  use("WhoIsSethDaniel/toggle-lsp-diagnostics.nvim")
 
   use({
     "zbirenbaum/copilot.lua",
@@ -64,8 +62,7 @@ return packer.startup(function(use)
       })
     end,
   })
-  use("folke/tokyonight.nvim")
-  --   use("christoomey/vim-tmux-navigator")
+  use("epwalsh/obsidian.nvim")
   use("szw/vim-maximizer")
   use("ray-x/lsp_signature.nvim")
 
@@ -91,11 +88,6 @@ return packer.startup(function(use)
   use("hrsh7th/nvim-cmp") --completion
   use("hrsh7th/cmp-buffer") -- source for text in buffer
   use("hrsh7th/cmp-path") -- source for file system paths
-  use({
-    "tabnine/cmp-tabnine",
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp",
-  })
   use({
     "zbirenbaum/copilot-cmp",
     after = { "copilot.lua" },
@@ -147,7 +139,40 @@ return packer.startup(function(use)
   use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
   --svelte
-  use("evanleck/vim-svelte")
+  -- use("evanleck/vim-svelte")
+
+  use({
+    "echasnovski/mini.nvim",
+    config = function()
+      local pokeball = [[
+⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣴⣶⣿⣿⣿⣿⣿⣿⣶⣦⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣄⠀⠀⠀⠀⠀
+⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀
+⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀⠀
+⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠉⠻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀
+⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⢠⣶⣶⣦⠀⠀⠸⣿⣿⣿⣿⣿⣿⣿⣿⡆
+⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⢻⣿⠀⠀⠸⣿⣿⡿⠁⠀⢀⣿⠈⠉⠙⠛⠿⢿⣿⣷
+⣿⣿⣿⣿⣿⠿⠋⠁⠀⠀⠈⢿⣦⡀⠀⠈⠉⠀⠀⢀⣾⠏⠀⠀⠀⠀⠀⠀⢸⣿
+⢿⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠙⠿⣶⣤⣤⣴⡾⠟⠃⠀⠀⠀⠀⠀⠀⠀⢸⣿
+⠸⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⠇
+⠀⢻⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀
+⠀⠀⠻⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⠟⠀⠀
+⠀⠀⠀⠙⢿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡿⠋⠀⠀⠀
+⠀⠀⠀⠀⠀⠙⠻⣶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣶⠟⠋⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠷⣶⣶⣶⣶⣶⣶⠾⠟⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀
+      ]]
+      local starter = require("mini.starter")
+      starter.setup({
+        items = { { name = "", action = "", section = "" } },
+        header = pokeball,
+        footer = "",
+        silent = true,
+        content_hooks = {
+          starter.gen_hook.aligning("center", "top"),
+        },
+      })
+    end,
+  })
 
   if packer_bootstrap then
     require("packer").sync()

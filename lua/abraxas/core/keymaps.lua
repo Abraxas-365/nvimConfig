@@ -33,27 +33,33 @@ keymap.set("n", "<leader>wj", "<C-w>j") -- toggle full
 keymap.set("n", "<leader>wk", "<C-w>k") -- toggle full
 
 --buffer
-keymap.set("n", "<leader>bk", ":bd!<CR>") -- toggle full
-keymap.set("n", "<leader>bq", ":q!<CR>") -- toggle full
+keymap.set("n", "<leader>bk", ":bd!<CR>", { silent = true }) -- toggle full
+keymap.set("n", "<leader>bq", ":q!<CR>", { silent = true }) -- toggle full
 
 -- keymap.set("n", "<leader>,<CR>", "<C-^>")
-keymap.set("n", "<leader>bn", ":bnext<CR>")
-keymap.set("n", "<leader>bp", ":bprev<CR>")
+keymap.set("n", "<leader>bn", ":bnext<CR>", { silent = true })
+keymap.set("n", "<leader>bp", ":bprev<CR>", { silent = true })
 
 --open
 
-keymap.set("t", "<leader>ot", ":ToggleTerm size=15  direction=horizontal<CR>")
-keymap.set("n", "<leader>ot", ":ToggleTerm size=15  direction=horizontal<CR>")
+keymap.set("t", "<leader>ott", ":ToggleTerm size=15  direction=horizontal<CR>")
+keymap.set("n", "<leader>ott", ":ToggleTerm size=15  direction=horizontal<CR>")
 keymap.set("n", "<leader>op", ":NvimTreeToggle<CR>") -- toggle full
+keymap.set("n", "<leader>fop", ":NvimTreeFindFile<CR>")
 
 --telescope
 
-keymap.set("n", "<leader><leader>", "<cmd>Telescope find_files<Cr>") -- toggle full
-keymap.set("n", "<leader>;", "<cmd>Telescope oldfiles<Cr>") -- toggle full
-keymap.set("n", "<leader>:", "<cmd>Telescope commands<Cr>") -- toggle full
-keymap.set("n", "<leader>.", "<cmd>Telescope buffers<Cr>") --  buffers
-keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<Cr>") -- toggle full
+--Git
+keymap.set("n", "<leader>gw", "<cmd>Gwrite<Cr>") -- toggle full
+keymap.set("n", "<leader>gcc", "<cmd>G commit<Cr>") -- toggle full
+keymap.set("n", "<leader>gt", "<cmd>diffget //2<Cr>") -- toggle full
+keymap.set("n", "<leader>gy", "<cmd>diffget //3<Cr>") -- toggle full
+keymap.set("n", "<leader>gv", "<cmd>Gvdiffsplit!<Cr>") -- toggle full
+keymap.set("n", "<leader>gs", vim.cmd.Git)
 
-keymap.set("n", "<esc>", ":noh<CR><esc>")
+keymap.set("n", "<esc>", ":noh<CR><esc>", { silent = true })
+keymap.set("n", "<leader>wo", ":only<CR>", { silent = true })
 
 keymap.set("t", "<esc>", [[<C-\><C-n>]])
+
+keymap.set("n", "<C-s>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { silent = true }) -- toggle full

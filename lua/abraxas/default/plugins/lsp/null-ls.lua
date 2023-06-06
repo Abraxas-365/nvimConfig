@@ -34,6 +34,8 @@ null_ls.setup({
     formatting.prettier,
     formatting.phpcsfixer.with({ exta_args = { "--rules", "@Symfony" } }), --php foter
     formatting.stylua, -- lua formatter
+    diagnostics.flake8,
+    null_ls.builtins.formatting.black.with({ extra_args = { "--line-length", "80" } }),
     diagnostics.eslint_d.with({ -- js/ts linter
       -- only enable eslint if root has .eslintrc.js
       condition = function(utils)

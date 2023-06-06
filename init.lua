@@ -1,10 +1,22 @@
--- Get the environment variable for the desired configuration
-local config_to_load = os.getenv("MY_NEOVIM_CONFIG")
-
-if config_to_load == "config1" then
-  require("abraxas.minimal.minimal_config")
-elseif config_to_load == "config2" then
-else
-  -- Default configuration (your current configuration)
-  require("abraxas.default.defult_config")
-end
+require("abraxas.core.options")
+require("abraxas.core.keymaps")
+require("abraxas.core.colorscheme")
+require("abraxas.default.plugins-setup")
+require("abraxas.default.plugins.comment")
+require("abraxas.default.plugins.nvim-tree")
+require("abraxas.default.plugins.lualine")
+require("abraxas.default.plugins.telescope")
+require("abraxas.default.plugins.nvim-cmp")
+require("abraxas.default.plugins.lsp.mason")
+require("abraxas.default.plugins.lsp.lspsaga")
+require("abraxas.default.plugins.lsp.lspconfig")
+require("abraxas.default.plugins.lsp.null-ls")
+require("abraxas.default.plugins.lsp.lsp_signature")
+-- require("abraxas.default.plugins.autopairs")
+require("abraxas.default.plugins.treesitter")
+require("abraxas.default.plugins.gitsigns")
+require("abraxas.default.plugins.go-nvim")
+require("abraxas.default.plugins.js-ts-nvimlf")
+require("abraxas.default.plugins.toggle-term")
+require("abraxas.default.plugins.colorizer")
+require("abraxas.default.plugins.obsidean")

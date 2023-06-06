@@ -38,7 +38,7 @@ nvimtree.setup({
     group_empty = true,
   },
   filters = {
-    dotfiles = false,
+    dotfiles = true,
     custom = { ".DS_Store", "DS_Store" },
     exclude = {},
   },
@@ -107,7 +107,5 @@ nvimtree.setup({
     keymap.set("n", "x", api.fs.cut, opts("Cut"))
     keymap.set("n", "y", api.fs.copy.filename, opts("Copy Name"))
     keymap.set("n", "Y", api.fs.copy.relative_path, opts("Copy Relative Path"))
-    keymap.set("n", "<2-LeftMouse>", api.node.open.edit, opts("Open"))
-    keymap.set("n", "<2-RightMouse>", api.tree.change_root_to_node, opts("CD"))
   end,
 })
