@@ -42,8 +42,6 @@ keymap.set("n", "<leader>bp", ":bprev<CR>", { silent = true })
 
 --open
 
-keymap.set("t", "<leader>ott", ":ToggleTerm size=15  direction=horizontal<CR>")
-keymap.set("n", "<leader>ott", ":ToggleTerm size=15  direction=horizontal<CR>")
 keymap.set("n", "<leader>op", ":NvimTreeToggle<CR>") -- toggle full
 keymap.set("n", "<leader>fop", ":NvimTreeFindFile<CR>")
 

@@ -22,7 +22,7 @@ local keymap = vim.keymap -- for conciseness
 local on_attach = function(client, bufnr)
   -- keybind options
   local opts = { noremap = true, silent = true, buffer = bufnr }
-
+  client.server_capabilities.semanticTokensProvider = nil
   -- set keybinds
   keymap.set("n", "gD", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
   keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts) -- got to declaration
@@ -53,8 +53,6 @@ capabilities.textDocument.foldingRange = {
 }
 require("ufo").setup()
 
--- Change the Diagnostic symbols in the sign column (gutter)
--- (not in youtube nvim video)
 local signs = { Error = " ", Warn = " ", Hint = "ﴞ ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
@@ -102,34 +100,36 @@ lspconfig["gopls"].setup({
 })
 
 -- rust
+local util = require("lspconfig/util")
 lspconfig["rust_analyzer"].setup({
   checkOnSave = {
     command = "clippy",
   },
+  filetypes = { "rust" },
+  root_dir = util.root_pattern("Cargo.toml"),
   capabilities = capabilities,
   on_attach = on_attach,
+  settings = {
+    ["rust-analyzer"] = {
+      cargo = {
+        allFeatures = true,
+      },
+    },
+  },
 })
+vim.api.nvim_exec(
+  [[
+  autocmd FileType rust lua SetupRustFmt()
+]],
+  false
+)
 
--- require("rust-tools").setup({
---   tools = {
---     runnables = {
---       use_telescope = true,
---     },
---     inlay_hints = {
---       auto = true,
---       show_parameter_hints = false,
---       parameter_hints_prefix = "",
---       other_hints_prefix = "",
---     },
---   },
--- })
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.rs",
-  callback = function()
-    vim.lsp.buf.formatting_sync(nil, 200)
-  end,
-  group = format_sync_grp,
-})
+function SetupRustFmt()
+  vim.g.rustfmt_autosave = 1
+  vim.g.rustfmt_emit_files = 1
+  vim.g.rustfmt_fail_silently = 0
+end
+
 -- py
 lspconfig["pylsp"].setup({
   capabilities = capabilities,

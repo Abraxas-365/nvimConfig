@@ -5,7 +5,9 @@ augroup user_colors
   autocmd ColorScheme gruvbox hi Normal ctermbg=NONE guibg=NONE
 augroup END
 ]])
+
 vim.cmd("colorscheme gruvbox")
+
 local ag = vim.api.nvim_create_augroup
 local au = vim.api.nvim_create_autocmd
 au("TextYankPost", {

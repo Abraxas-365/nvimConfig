@@ -44,7 +44,7 @@ return packer.startup(function(use)
     end,
   })
   use("norcalli/nvim-colorizer.lua")
-  use("akinsho/toggleterm.nvim")
+  -- use("akinsho/toggleterm.nvim")
   use("nvim-lua/plenary.nvim")
   use("wbthomason/packer.nvim")
   use("sainnhe/gruvbox-material")
@@ -62,7 +62,6 @@ return packer.startup(function(use)
       })
     end,
   })
-  use("epwalsh/obsidian.nvim")
   use("szw/vim-maximizer")
   use("ray-x/lsp_signature.nvim")
 
@@ -134,9 +133,11 @@ return packer.startup(function(use)
   use("ray-x/go.nvim")
   use("ray-x/guihua.lua")
   --rust
+  use("rust-lang/rust.vim")
   -- use("simrat39/rust-tools.nvim")
   --git
   use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+  use({ "catppuccin/nvim", as = "catppuccin" })
 
   --svelte
   -- use("evanleck/vim-svelte")
