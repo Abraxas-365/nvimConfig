@@ -33,24 +33,23 @@ if not status then
 end
 
 return packer.startup(function(use)
+  use("wbthomason/packer.nvim")
   use({
     "mg979/vim-visual-multi",
     branch = "master",
     config = function()
       vim.g.VM_maps = {
-        ["Find Under"] = "<C-d>",
-        ["Find Subword Under"] = "<C-d>",
+        ["Find Under"] = "<C-c>",
+        ["Find Subword Under"] = "<C-c>",
       }
     end,
   })
-  use("norcalli/nvim-colorizer.lua")
+  -- use("norcalli/nvim-colorizer.lua")
   -- use("akinsho/toggleterm.nvim")
   use("nvim-lua/plenary.nvim")
-  use("wbthomason/packer.nvim")
-  use("sainnhe/gruvbox-material")
   use("morhetz/gruvbox")
-  use("WhoIsSethDaniel/toggle-lsp-diagnostics.nvim")
 
+  use({ "nvim-telescope/telescope-ui-select.nvim" })
   use({
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
@@ -63,7 +62,6 @@ return packer.startup(function(use)
     end,
   })
   use("szw/vim-maximizer")
-  use("ray-x/lsp_signature.nvim")
 
   --wrap with simbol
   use("tpope/vim-surround")
@@ -105,10 +103,10 @@ return packer.startup(function(use)
   -- configuring lsp servers
   use("neovim/nvim-lspconfig") -- easily configure language servers
   use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
-  use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
   use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
   use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
+  use("ray-x/lsp_signature.nvim")
   -- formatting & linting
   use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
   use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
@@ -122,59 +120,53 @@ return packer.startup(function(use)
   })
 
   -- auto closing
-  use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
-  use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
+  -- use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
   -- git integration
   use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
   use("tpope/vim-fugitive") -- show line modifications on left hand side
 
-  --golang
-  use("ray-x/go.nvim")
-  use("ray-x/guihua.lua")
   --rust
   use("rust-lang/rust.vim")
-  -- use("simrat39/rust-tools.nvim")
   --git
   use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
-  use({ "catppuccin/nvim", as = "catppuccin" })
 
   --svelte
   -- use("evanleck/vim-svelte")
 
-  use({
-    "echasnovski/mini.nvim",
-    config = function()
-      local pokeball = [[
-⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣴⣶⣿⣿⣿⣿⣿⣿⣶⣦⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣄⠀⠀⠀⠀⠀
-⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀
-⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀⠀
-⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠉⠻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀
-⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⢠⣶⣶⣦⠀⠀⠸⣿⣿⣿⣿⣿⣿⣿⣿⡆
-⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⢻⣿⠀⠀⠸⣿⣿⡿⠁⠀⢀⣿⠈⠉⠙⠛⠿⢿⣿⣷
-⣿⣿⣿⣿⣿⠿⠋⠁⠀⠀⠈⢿⣦⡀⠀⠈⠉⠀⠀⢀⣾⠏⠀⠀⠀⠀⠀⠀⢸⣿
-⢿⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠙⠿⣶⣤⣤⣴⡾⠟⠃⠀⠀⠀⠀⠀⠀⠀⢸⣿
-⠸⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⠇
-⠀⢻⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀
-⠀⠀⠻⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⠟⠀⠀
-⠀⠀⠀⠙⢿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡿⠋⠀⠀⠀
-⠀⠀⠀⠀⠀⠙⠻⣶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣶⠟⠋⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠷⣶⣶⣶⣶⣶⣶⠾⠟⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀
-      ]]
-      local starter = require("mini.starter")
-      starter.setup({
-        items = { { name = "", action = "", section = "" } },
-        header = pokeball,
-        footer = "",
-        silent = true,
-        content_hooks = {
-          starter.gen_hook.aligning("center", "top"),
-        },
-      })
-    end,
-  })
-
+  --   use({
+  --     "echasnovski/mini.nvim",
+  --     config = function()
+  --       local pokeball = [[
+  -- ⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣴⣶⣿⣿⣿⣿⣿⣿⣶⣦⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀
+  -- ⠀⠀⠀⠀⠀⣠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣄⠀⠀⠀⠀⠀
+  -- ⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀
+  -- ⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀⠀
+  -- ⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠉⠻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀
+  -- ⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⢠⣶⣶⣦⠀⠀⠸⣿⣿⣿⣿⣿⣿⣿⣿⡆
+  -- ⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⢻⣿⠀⠀⠸⣿⣿⡿⠁⠀⢀⣿⠈⠉⠙⠛⠿⢿⣿⣷
+  -- ⣿⣿⣿⣿⣿⠿⠋⠁⠀⠀⠈⢿⣦⡀⠀⠈⠉⠀⠀⢀⣾⠏⠀⠀⠀⠀⠀⠀⢸⣿
+  -- ⢿⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠙⠿⣶⣤⣤⣴⡾⠟⠃⠀⠀⠀⠀⠀⠀⠀⢸⣿
+  -- ⠸⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⠇
+  -- ⠀⢻⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀
+  -- ⠀⠀⠻⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⠟⠀⠀
+  -- ⠀⠀⠀⠙⢿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡿⠋⠀⠀⠀
+  -- ⠀⠀⠀⠀⠀⠙⠻⣶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣶⠟⠋⠀⠀⠀⠀⠀
+  -- ⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠷⣶⣶⣶⣶⣶⣶⠾⠟⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀
+  --       ]]
+  --       local starter = require("mini.starter")
+  --       starter.setup({
+  --         items = { { name = "", action = "", section = "" } },
+  --         header = pokeball,
+  --         footer = "",
+  --         silent = true,
+  --         content_hooks = {
+  --           starter.gen_hook.aligning("center", "top"),
+  --         },
+  --       })
+  --     end,
+  --   })
+  --
   if packer_bootstrap then
     require("packer").sync()
   end

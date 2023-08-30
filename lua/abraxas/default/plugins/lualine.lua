@@ -10,38 +10,6 @@ end
 -- get lualine nightfly theme
 local nord = require("lualine.themes.gruvbox")
 
--- local function current_signature()
---   if not pcall(require, "lsp_signature") then
---     return
---   end
---   local sig = require("lsp_signature").status_line(80)
---   return sig.label .. "🤙"
--- end
---
--- local function hover_and_print()
---   local window, offset_encoding = 0, nil
---   local params = require("vim.lsp.util").make_position_params(window, offset_encoding)
---   local function handler(err, result, ctx, config)
---     -- see :help lsp-handler
---     if err then
---       return
---     end
---     if result ~= nil then
---       local s = vim.inspect(result.contents.value)
---       -- print(string.match(s, "'\n'.*'\n'"))
---       print(s)
---       -- local words = {}
---       -- for word in s:gmatch("\n.*\n") do
---       --   table.insert(words, word)
---       -- end
---       -- print(words[1])
---     else
---       print(" ")
---     end
---   end
---   return vim.inspect(vim.lsp.buf_request(0, "textDocument/hover", params, handler))
--- end
-
 local custom_fname = require("lualine.components.filename"):extend()
 local highlight = require("lualine.highlight")
 local default_status_colors = { saved = "#92BE82", modified = "#F45037" }

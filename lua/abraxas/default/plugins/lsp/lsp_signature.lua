@@ -1,14 +1,3 @@
--- local signature_config = {
---   log_path = vim.fn.expand("$HOME") .. "/tmp/sig.log",
---   debug = true,
---   hint_enable = false,
---   handler_opts = { border = "single" },
---   max_width = 80,
--- }
---
--- require("lsp_signature").setup(signature_config)
--- require("lsp_signature").status_line(signature_config.max_width)
---
 --lsp signature
 local cfg = {
   debug = false, -- set to true to enable debug logging
@@ -18,12 +7,12 @@ local cfg = {
 
   bind = true, -- This is mandatory, otherwise border config won't get registered.
   -- If you want to hook lspsaga or other signature handler, pls set to false
-  doc_lines = 10, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
+  doc_lines = 0, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
   -- set to 0 if you DO NOT want any API comments be shown
   -- This setting only take effect in insert mode, it does not affect signature help in normal
   -- mode, 10 by default
 
-  max_height = 12, -- max height of signature floating_window
+  max_height = 2, -- max height of signature floating_window
   max_width = 80, -- max_width of signature floating_window
   noice = false, -- set to true if you using noice to render markdow
   wrap = true, -- allow doc/signature text wrap inside floating_window, useful if your lsp return doc/sig is too long

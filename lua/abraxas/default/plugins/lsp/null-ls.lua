@@ -31,7 +31,19 @@ null_ls.setup({
     --     "typescriptreact",
     --   },
     -- }), -- js/ts formatter
-    formatting.prettier,
+    formatting.prettier.with({
+      filetypes = {
+        "html",
+        "json",
+        "svelte",
+        "markdown",
+        "css",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+      },
+    }),
     formatting.phpcsfixer.with({ exta_args = { "--rules", "@Symfony" } }), --php foter
     formatting.stylua, -- lua formatter
     diagnostics.flake8,

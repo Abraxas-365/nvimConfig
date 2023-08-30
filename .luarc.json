@@ -6,6 +6,8 @@
         "CR",
         "format_sync_grp",
         "au",
-        "ag"
+        "ag",
+        "Capabilities",
+        "fd"
     ]
 }

@@ -38,8 +38,6 @@ cmp.setup({
     end,
   },
   mapping = cmp.mapping.preset.insert({
-    ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-    ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
     ["<Tab>"] = cmp.mapping.select_next_item(), -- next suggestion
     ["<C-d>"] = cmp.mapping.complete(),
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -50,8 +48,8 @@ cmp.setup({
   }),
   -- sources for autocompletion
   sources = cmp.config.sources({
-    { name = "copilot", max_item_count = 3, score = 8 },
-    { name = "nvim_lsp", max_item_count = 20, score = 5 }, -- lsp
+    { name = "copilot", max_item_count = 3, score = 5 },
+    { name = "nvim_lsp", max_item_count = 20, score = 8 }, -- lsp
     { name = "luasnip", max_item_count = 10, score = 3 }, -- snippets
     { name = "buffer", max_item_count = 10 }, -- text within current buffer
     { name = "path" }, -- file system paths

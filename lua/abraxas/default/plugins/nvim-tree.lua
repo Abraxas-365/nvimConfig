@@ -61,7 +61,7 @@ nvimtree.setup({
     keymap.set("n", "<CR>", api.node.open.preview, opts("Open Preview"))
     keymap.set("n", "<C-]>", api.tree.change_root_to_node, opts("CD"))
     keymap.set("n", "<C-e>", api.node.open.replace_tree_buffer, opts("Open: In Place"))
-    keymap.set("n", "<C-k>", api.node.show_info_popup, opts("Info"))
+    -- keymap.set("n", "<C-k>", api.node.show_info_popup, opts("Info"))
     keymap.set("n", "<C-r>", api.fs.rename_sub, opts("Rename: Omit Filename"))
     keymap.set("n", "<C-t>", api.node.open.tab, opts("Open: New Tab"))
     keymap.set("n", "<C-v>", api.node.open.vertical, opts("Open: Vertical Split"))
