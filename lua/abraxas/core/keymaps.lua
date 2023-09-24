@@ -25,7 +25,12 @@ vim.api.nvim_set_keymap(
 --mias
 keymap.set("n", "<leader>mdl", "Vyp") --copiar linea y pegarla
 keymap.set("v", "<leader>mdl", "y}p") --copiar linea y pegarla
-
+keymap.set("n", "gnf", "]m")
+keymap.set("n", "gef", "]M")
+keymap.set("n", "gpf", "[m")
+keymap.set("v", "gnf", "]m")
+keymap.set("v", "gef", "]M")
+keymap.set("v", "gpf", "[m")
 --window
 
 keymap.set("n", "<leader>wv", "<C-w>v") --split vertical

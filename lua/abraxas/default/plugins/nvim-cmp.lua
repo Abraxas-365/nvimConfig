@@ -1,5 +1,20 @@
 return {
   "hrsh7th/nvim-cmp",
+  dependencies = {
+
+    "hrsh7th/cmp-buffer", -- source for text in buffer
+    "hrsh7th/cmp-path", -- source for file system paths
+    -- snippets
+    "L3MON4D3/LuaSnip", -- snippet engine
+    "saadparwaiz1/cmp_luasnip", -- for autocompletion
+    "rafamadriz/friendly-snippets", -- useful snippets
+    -- managing & installing lsp servers, linters & formatters
+
+    -- configuring lsp servers
+    "hrsh7th/cmp-nvim-lsp", -- for autocompletion
+    -- additional functionality for typescript server (e.g. rename file & update imports)
+    "onsails/lspkind.nvim", -- vs-code like icons for autocompletion
+  },
   config = function()
     -- import nvim-cmp plugin safely
     local cmp_status, cmp = pcall(require, "cmp")

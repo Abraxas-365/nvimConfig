@@ -16,7 +16,6 @@ augroup END
       vim.cmd("colorscheme gruvbox")
     end,
   },
-  "wbthomason/packer.nvim",
   {
     "mg979/vim-visual-multi",
     branch = "master",
@@ -77,27 +76,45 @@ augroup END
     end,
   },
 
-  --explorer
-  --icons
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = { "nvim-tree/nvim-tree.lua" },
+  },
+
   "ryanoasis/vim-devicons",
   "kyazdani42/nvim-web-devicons",
 
-  --status line
+  {
+    "RutaTang/quicknote.nvim",
+    config = function()
+      require("quicknote").setup({
+        mode = "portable", -- "portable" | "resident", default to "portable"
+        sign = "N", -- This is used for the signs on the left side (refer to ShowNoteSigns() api).
+        -- You can change it to whatever you want (eg. some nerd fonts icon), 'N' is default
+        filetype = "md",
+        git_branch_recognizable = true, -- If true, quicknote will separate notes by git branch
+        -- But it should only be used with resident mode,  it has not effect used with portable mode
+      })
+      local keymap = vim.keymap
+      keymap.set("n", "<leader>nl", "<cmd>:lua require('quicknote').NewNoteAtCurrentLine()<Cr>")
+      keymap.set("n", "<leader>ng", "<cmd>:lua require('quicknote').NewNoteAtGlobal()<Cr>")
+      keymap.set("n", "<leader>nw", "<cmd>:lua require('quicknote').NewNoteAtCWD()<Cr>")
+      keymap.set("n", "<leader>nol", "<cmd>:lua require('quicknote').OpenNoteAtCurrentLine()<Cr>")
+      keymap.set("n", "<leader>nog", "<cmd>:lua require('quicknote').OpenNoteAtGlobal()<Cr>")
+      keymap.set("n", "<leader>now", "<cmd>:lua require('quicknote').OpenNoteAtCWD()<Cr>")
+      keymap.set("n", "<leader>ndl", "<cmd>:lua require('quicknote').DeleteNoteAtCurrentLine()<Cr>")
+      keymap.set("n", "<leader>ndg", "<cmd>:lua require('quicknote').DeleteNoteAtGlobal()<Cr>")
+      keymap.set("n", "<leader>ndw", "<cmd>:lua require('quicknote').DeleteNoteAtCWD()<Cr>")
+      keymap.set("n", "<leader>nt", "<cmd>:lua require('quicknote').ToggleNoteSigns()<Cr>")
+      keymap.set(
+        "n",
+        "<leader>nsa",
+        "<cmd>:lua require('quicknote').ListNotesForAFileOrWDInCWD()<Cr>"
+      )
+    end,
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
 
-  "hrsh7th/cmp-buffer", -- source for text in buffer
-  "hrsh7th/cmp-path", -- source for file system paths
-  -- snippets
-  "L3MON4D3/LuaSnip", -- snippet engine
-  "saadparwaiz1/cmp_luasnip", -- for autocompletion
-  "rafamadriz/friendly-snippets", -- useful snippets
-  -- managing & installing lsp servers, linters & formatters
-
-  -- configuring lsp servers
-  "hrsh7th/cmp-nvim-lsp", -- for autocompletion
-  "jose-elias-alvarez/typescript.nvim", -- additional functionality for typescript server (e.g. rename file & update imports)
-  "onsails/lspkind.nvim", -- vs-code like icons for autocompletion
-
-  -- formatting & linting
   {
     "kevinhwang91/nvim-ufo",
     dependencies = "kevinhwang91/promise-async",
