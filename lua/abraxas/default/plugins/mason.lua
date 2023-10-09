@@ -50,6 +50,7 @@ return {
         "tailwindcss",
         "lua_ls",
         "gopls",
+        "tsserver",
         "rust_analyzer",
         "pylsp",
         "solidity",

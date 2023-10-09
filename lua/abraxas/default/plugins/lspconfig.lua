@@ -7,11 +7,6 @@ return {
       return
     end
 
-    local typescript_setup, typescript = pcall(require, "typescript")
-    if not typescript_setup then
-      return
-    end
-
     local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
     if not cmp_nvim_lsp_status then
       return
@@ -104,13 +99,6 @@ return {
       vim.keymap.set("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 
       -- keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
-
-      -- typescript specific keymaps (e.g. rename file and update imports)
-      if client.name == "tsserver" then
-        vim.keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
-        vim.keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
-        vim.keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
-      end
     end
 
     local signs = { Warn = "", Hint = "", Error = "", Info = "" }
@@ -135,11 +123,9 @@ return {
     })
 
     -- configure typescript server with plugin
-    typescript.setup({
-      server = {
-        capabilities = capabilities,
-        on_attach = on_attach,
-      },
+    lspconfig["tsserver"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
     })
     vim.cmd([[
 augroup FileTypeSpecificAutocommands
