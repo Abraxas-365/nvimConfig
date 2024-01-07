@@ -7,6 +7,10 @@ return {
       return
     end
 
+    vim.diagnostic.config({
+      virtual_text = false,
+      underline = false, -- add this line to remove underlines
+    })
     -- for conciseness
     local formatting = null_ls.builtins.formatting -- to setup formatters
     local diagnostics = null_ls.builtins.diagnostics -- to setup linters
@@ -18,22 +22,6 @@ return {
     null_ls.setup({
       -- setup formatters & linters
       sources = {
-        --  to disable file types use
-        -- formatting.prettier.with({disabled_filetypes: {}}), --(see null-ls docs)
-        -- formatting.prettier.with({
-        --   extra_args = { "--print-width", "80" },
-        --   filetypes = {
-        --     "html",
-        --     "json",
-        --     "svelte",
-        --     "markdown",
-        --     "css",
-        --     "javascript",
-        --     "javascriptreact",
-        --     "typescript",
-        --     "typescriptreact",
-        --   },
-        -- }), -- js/ts formatter
         formatting.prettier.with({
           filetypes = {
             "html",

@@ -61,6 +61,7 @@ augroup END
     end,
   },
   "nvim-lua/plenary.nvim",
+  "Hoffs/omnisharp-extended-lsp.nvim",
 
   "nvim-telescope/telescope-ui-select.nvim",
   {

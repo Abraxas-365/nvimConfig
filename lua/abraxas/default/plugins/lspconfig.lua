@@ -78,9 +78,9 @@ return {
       move_cursor_key = nil, -- imap, use nvim_set_current_win to move cursor between current win
     }
     local on_attach = function(client, bufnr)
-      if client.name ~= "svelte" then
-        lsp_signature.on_attach(signature_cfg, bufnr)
-      end
+      -- if client.name ~= "svelte" then
+      --   lsp_signature.on_attach(signature_cfg, bufnr)
+      -- end
       client.server_capabilities.semanticTokensProvider = nil
       -- keybind options
       local opts = { noremap = true, silent = true, buffer = bufnr }
@@ -101,6 +101,7 @@ return {
       vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
       vim.keymap.set("n", "<leader>D", "<cmd>lua vim.diagnostic.open_float()<CR>", opts) -- show  diagnostics for line
       vim.keymap.set("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts) -- show documentation for what is under cursor
+      vim.keymap.set("i", "<C-b>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts) -- show documentation for what is under cursor
       vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
       vim.keymap.set("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
       vim.keymap.set("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
@@ -191,7 +192,7 @@ augroup end
       on_attach = on_attach,
     })
     vim.cmd([[
-augroup FormatAutogroup
+augroup GoFormatAutogroup
   autocmd!
   autocmd BufWritePre *.go lua vim.lsp.buf.format()
 augroup END
@@ -251,6 +252,29 @@ augroup END
       capabilities = capabilities,
       on_attach = on_attach,
     })
+
+    --c# Quitar estooooooo apenas pueda irme de esto
+    local omnisharp_extended = require("omnisharp_extended")
+    local pid = vim.fn.getpid()
+    lspconfig["omnisharp"].setup({
+      cmd = {
+        "/Users/abraxas/.local/share/nvim/mason/bin/omnisharp",
+        "--languageserver",
+        "--hostPID",
+        tostring(pid),
+      },
+      capabilities = capabilities,
+      on_attach = on_attach,
+      handlers = {
+        ["textDocument/definition"] = require("omnisharp_extended").handler,
+      },
+    })
+    vim.cmd([[
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePre *.cs lua vim.lsp.buf.format()
+augroup END
+]])
 
     --php
     lspconfig["intelephense"].setup({
