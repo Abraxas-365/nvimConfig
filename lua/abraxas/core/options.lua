@@ -14,7 +14,7 @@ opt.wrap = false
 
 opt.ignorecase = true
 opt.smartcase = true
-
+opt.conceallevel = 2
 opt.cursorline = true -- highlight the current cursor line
 
 opt.termguicolors = true
@@ -36,3 +36,7 @@ vim.cmd([[set undodir=~/.vim/undodir]])
 vim.cmd([[set undofile]])
 vim.cmd([[set scrolloff=10]])
 opt.background = "dark"
+
+-- vim.cmd([[autocmd BufRead,BufNewFile *.md set filetype=markdown]])
+--
+vim.cmd([[autocmd FileType markdown set syntax=markdown]])

@@ -130,18 +130,18 @@ return {
       },
     })
 
-    require("telescope").setup({
-      extensions = {
-        quicknote = {
-          defaultScope = "CWD",
-        },
-      },
-    })
+    -- require("telescope").setup({
+    --   extensions = {
+    --     quicknote = {
+    --       defaultScope = "CWD",
+    --     },
+    --   },
+    -- })
 
-    require("telescope").load_extension("quicknote")
-    keymap.set("n", "<leader>nsw", "<cmd>Telescope quicknote<Cr>") -- toggle full
-    keymap.set("n", "<leader>nsg", "<cmd>Telescope quicknote scope=Global<Cr>") -- toggle full
-    keymap.set("n", "<leader>nsf", "<cmd>Telescope quicknote scope=CurrentBuffer<Cr>") -- toggle full
+    -- require("telescope").load_extension("quicknote")
+    -- keymap.set("n", "<leader>nsw", "<cmd>Telescope quicknote<Cr>") -- toggle full
+    -- keymap.set("n", "<leader>nsg", "<cmd>Telescope quicknote scope=Global<Cr>") -- toggle full
+    -- keymap.set("n", "<leader>nsf", "<cmd>Telescope quicknote scope=CurrentBuffer<Cr>") -- toggle full
     require("telescope").load_extension("ui-select")
   end,
 }

@@ -23,4 +23,10 @@ highlight lualine_b_diagnostics_error_replace guifg=#f55037 guibg=#504945
 highlight lualine_b_diagnostics_error_command guifg=#f55037 guibg=#504945
 highlight lualine_b_diagnostics_error_terminal guifg=#f55037 guibg=#504945
 highlight lualine_b_diagnostics_error_inactive guifg=#f55037 guibg=#3c3836
+highlight markdownH1 guifg=#fb4934
+highlight markdownH2 guifg=#fabd2f
+highlight markdownH3 guifg=#b8bb26
+highlight markdownH4 guifg=#83a598
+highlight markdownH5 guifg=#d3869b
+highlight markdownH6 guifg=#8ec07c
 ]])

@@ -1,39 +1,5 @@
 return {
 
-  -- {
-  --   "ellisonleao/gruvbox.nvim",
-  --   priority = 1000,
-  --   config = function()
-  --     require("gruvbox").setup({
-  --       terminal_colors = true, -- add neovim terminal colors
-  --       undercurl = true,
-  --       underline = true,
-  --       bold = true,
-  --       italic = {
-  --         strings = true,
-  --         emphasis = true,
-  --         comments = true,
-  --         operators = false,
-  --         folds = true,
-  --       },
-  --       strikethrough = true,
-  --       invert_selection = false,
-  --       invert_signs = false,
-  --       invert_tabline = false,
-  --       invert_intend_guides = false,
-  --       inverse = true, -- invert background for search, diffs, statuslines and errors
-  --       contrast = "soft", -- can be "hard", "soft" or empty string
-  --       palette_overrides = {},
-  --       overrides = {},
-  --       dim_inactive = false,
-  --       transparent_mode = false,
-  --     })
-  --
-  --     vim.o.background = "dark" -- or "light" for light mode
-  --     vim.cmd([[colorscheme gruvbox]])
-  --     vim.cmd("colorscheme gruvbox")
-  --   end,
-  -- },
   {
     "morhetz/gruvbox",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -50,6 +16,8 @@ augroup END
       vim.cmd("colorscheme gruvbox")
     end,
   },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+
   {
     "mg979/vim-visual-multi",
     branch = "master",
@@ -119,36 +87,36 @@ augroup END
   "ryanoasis/vim-devicons",
   "kyazdani42/nvim-web-devicons",
 
-  {
-    "RutaTang/quicknote.nvim",
-    config = function()
-      require("quicknote").setup({
-        mode = "portable", -- "portable" | "resident", default to "portable"
-        sign = "N", -- This is used for the signs on the left side (refer to ShowNoteSigns() api).
-        -- You can change it to whatever you want (eg. some nerd fonts icon), 'N' is default
-        filetype = "md",
-        git_branch_recognizable = true, -- If true, quicknote will separate notes by git branch
-        -- But it should only be used with resident mode,  it has not effect used with portable mode
-      })
-      local keymap = vim.keymap
-      keymap.set("n", "<leader>nl", "<cmd>:lua require('quicknote').NewNoteAtCurrentLine()<Cr>")
-      keymap.set("n", "<leader>ng", "<cmd>:lua require('quicknote').NewNoteAtGlobal()<Cr>")
-      keymap.set("n", "<leader>nw", "<cmd>:lua require('quicknote').NewNoteAtCWD()<Cr>")
-      keymap.set("n", "<leader>nol", "<cmd>:lua require('quicknote').OpenNoteAtCurrentLine()<Cr>")
-      keymap.set("n", "<leader>nog", "<cmd>:lua require('quicknote').OpenNoteAtGlobal()<Cr>")
-      keymap.set("n", "<leader>now", "<cmd>:lua require('quicknote').OpenNoteAtCWD()<Cr>")
-      keymap.set("n", "<leader>ndl", "<cmd>:lua require('quicknote').DeleteNoteAtCurrentLine()<Cr>")
-      keymap.set("n", "<leader>ndg", "<cmd>:lua require('quicknote').DeleteNoteAtGlobal()<Cr>")
-      keymap.set("n", "<leader>ndw", "<cmd>:lua require('quicknote').DeleteNoteAtCWD()<Cr>")
-      keymap.set("n", "<leader>nt", "<cmd>:lua require('quicknote').ToggleNoteSigns()<Cr>")
-      keymap.set(
-        "n",
-        "<leader>nsa",
-        "<cmd>:lua require('quicknote').ListNotesForAFileOrWDInCWD()<Cr>"
-      )
-    end,
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
+  -- {
+  --   "RutaTang/quicknote.nvim",
+  --   config = function()
+  --     require("quicknote").setup({
+  --       mode = "portable", -- "portable" | "resident", default to "portable"
+  --       sign = "N", -- This is used for the signs on the left side (refer to ShowNoteSigns() api).
+  --       -- You can change it to whatever you want (eg. some nerd fonts icon), 'N' is default
+  --       filetype = "md",
+  --       git_branch_recognizable = true, -- If true, quicknote will separate notes by git branch
+  --       -- But it should only be used with resident mode,  it has not effect used with portable mode
+  --     })
+  --     local keymap = vim.keymap
+  --     keymap.set("n", "<leader>nl", "<cmd>:lua require('quicknote').NewNoteAtCurrentLine()<Cr>")
+  --     keymap.set("n", "<leader>ng", "<cmd>:lua require('quicknote').NewNoteAtGlobal()<Cr>")
+  --     keymap.set("n", "<leader>nw", "<cmd>:lua require('quicknote').NewNoteAtCWD()<Cr>")
+  --     keymap.set("n", "<leader>nol", "<cmd>:lua require('quicknote').OpenNoteAtCurrentLine()<Cr>")
+  --     keymap.set("n", "<leader>nog", "<cmd>:lua require('quicknote').OpenNoteAtGlobal()<Cr>")
+  --     keymap.set("n", "<leader>now", "<cmd>:lua require('quicknote').OpenNoteAtCWD()<Cr>")
+  --     keymap.set("n", "<leader>ndl", "<cmd>:lua require('quicknote').DeleteNoteAtCurrentLine()<Cr>")
+  --     keymap.set("n", "<leader>ndg", "<cmd>:lua require('quicknote').DeleteNoteAtGlobal()<Cr>")
+  --     keymap.set("n", "<leader>ndw", "<cmd>:lua require('quicknote').DeleteNoteAtCWD()<Cr>")
+  --     keymap.set("n", "<leader>nt", "<cmd>:lua require('quicknote').ToggleNoteSigns()<Cr>")
+  --     keymap.set(
+  --       "n",
+  --       "<leader>nsa",
+  --       "<cmd>:lua require('quicknote').ListNotesForAFileOrWDInCWD()<Cr>"
+  --     )
+  --   end,
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  -- },
 
   {
     "kevinhwang91/nvim-ufo",
