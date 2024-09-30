@@ -30,3 +30,18 @@ highlight markdownH4 guifg=#83a598
 highlight markdownH5 guifg=#d3869b
 highlight markdownH6 guifg=#8ec07c
 ]])
+
+local function setLightSolarized()
+  -- Set the background to light
+  vim.opt.background = "light"
+  -- Set the colorscheme to solarized
+  vim.cmd("colorscheme solarized")
+end
+_G.setLightSolarized = setLightSolarized
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>ml",
+  ":lua setLightSolarized()<CR>",
+  { noremap = true, silent = true }
+)

@@ -128,6 +128,7 @@ return {
     lspconfig["html"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      filetypes = { "html", "templ" },
     })
 
     -- configure typescript server with plugin
@@ -169,11 +170,13 @@ augroup end
         "svelte",
         "vue",
         "rust",
+        "templ",
       },
       init_options = {
         -- There you can set languages to be considered as different ones by tailwind lsp I guess same as includeLanguages in VSCod
         userLanguages = {
           rust = "html",
+          templ = "html",
         },
       },
       -- Here If any of files from list will exist tailwind lsp will activate.
@@ -197,13 +200,45 @@ augroup GoFormatAutogroup
   autocmd BufWritePre *.go lua vim.lsp.buf.format()
 augroup END
 ]])
+
+    lspconfig.htmx.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+      filetypes = { "html", "templ" },
+    })
+
+    lspconfig["templ"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    vim.api.nvim_create_autocmd(
+      { "BufWritePre" },
+      { pattern = { "*.templ" }, callback = vim.lsp.buf.format }
+    )
+
+    vim.cmd([[
+augroup TemplFormatAutogroup
+  autocmd!
+  autocmd BufWritePre *.templ lua vim.lsp.buf.format()
+augroup END
+]])
+
     -- rust
 
     lspconfig.rust_analyzer.setup({
       capabilities = capabilities,
       on_attach = on_attach,
       cmd = { "rustup", "run", "stable", "rust-analyzer" },
+      settings = {
+        ["rust-analyzer"] = {
+          cargo = {
+            allFeatures = true,
+          },
+        },
+      },
     })
+
     vim.cmd([[
 augroup RustFormatAutogroup
   autocmd!
@@ -276,11 +311,39 @@ augroup FormatAutogroup
 augroup END
 ]])
 
+    lspconfig["clangd"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      -- cmd = { "clangd", "--std=c++11" },
+    })
+
+    vim.cmd([[
+augroup CFormatAutogroup
+  autocmd!
+  autocmd BufWritePre *.cpp lua vim.lsp.buf.format()
+augroup END
+]])
+
+    --perl
+    lspconfig.perlnavigator.setup({
+      cmd = { "perlnavigator", "--stdio" }, -- Ensure this path is correct
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    vim.cmd([[
+augroup CFormatAutogroup
+  autocmd!
+  autocmd BufWritePre *.pl lua vim.lsp.buf.format()
+augroup END
+]])
+
     --php
     lspconfig["intelephense"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
+
     -- configure lua server (with special settings)
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,

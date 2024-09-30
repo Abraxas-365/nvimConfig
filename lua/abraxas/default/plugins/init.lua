@@ -19,6 +19,11 @@ augroup END
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
   {
+    "maxmx03/solarized.nvim",
+    priority = 1000,
+  },
+
+  {
     "mg979/vim-visual-multi",
     branch = "master",
     config = function()
@@ -40,6 +45,17 @@ augroup END
       require("copilot").setup({
         suggestion = { enabled = false },
         panel = { enabled = false },
+        filetypes = {
+          yaml = true,
+          markdown = true,
+          help = false,
+          gitcommit = false,
+          gitrebase = false,
+          hgcommit = false,
+          svn = false,
+          cvs = false,
+          ["."] = false,
+        },
       })
     end,
     dependencies = {
@@ -122,7 +138,11 @@ augroup END
     "kevinhwang91/nvim-ufo",
     dependencies = "kevinhwang91/promise-async",
     config = function()
-      require("ufo").setup()
+      require("ufo").setup({
+        provider_selector = function(bufnr, filetype, buftype)
+          return { "treesitter", "indent" }
+        end,
+      })
     end,
   },
   {
@@ -141,4 +161,38 @@ augroup END
   "tpope/vim-fugitive", -- show line modifications on left hand side
 
   { "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
+
+  {
+    "dhruvasagar/vim-table-mode",
+    config = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "markdown",
+        callback = function()
+          vim.opt_local.tabstop = 2
+          vim.opt_local.shiftwidth = 2
+          vim.opt_local.expandtab = true
+          -- Enable Table Mode
+          vim.cmd("TableModeEnable")
+        end,
+      })
+    end,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    ft = { "html", "svelte" },
+    opts = {},
+    config = function()
+      require("ibl").setup({})
+    end,
+  },
+
+  {
+    "oysandvik94/curl.nvim",
+    cmd = { "CurlOpen" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = true,
+  },
 }

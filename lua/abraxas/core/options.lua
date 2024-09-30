@@ -40,3 +40,5 @@ opt.background = "dark"
 -- vim.cmd([[autocmd BufRead,BufNewFile *.md set filetype=markdown]])
 --
 vim.cmd([[autocmd FileType markdown set syntax=markdown]])
+
+vim.filetype.add({ extension = { templ = "templ" } })

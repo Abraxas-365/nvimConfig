@@ -290,7 +290,9 @@ return {
     })
   end,
 
-  keymap.set("n", "<leader>on", ":ObsideanNew ", { silent = true }),
+  keymap.set("n", "<leader>on", ":ObsidianNew ", { silent = true }),
   keymap.set("n", "<leader>ot", ":ObsidianToday<CR>", { silent = true }),
   keymap.set("n", "<leader>ow", ":ObsidianWorkspace ", { silent = true }),
+  keymap.set("n", "<leader>oww", ":ObsidianWorkspace work<CR>", { silent = true }),
+  keymap.set("n", "<leader>os", ":ObsidianSearch<CR>", { silent = true }),
 }

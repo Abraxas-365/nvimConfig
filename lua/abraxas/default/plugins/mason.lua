@@ -59,6 +59,7 @@ return {
         "jsonls",
         "dockerls",
         "intelephense",
+        "clangd",
         "omnisharp",
       },
       -- auto-install configured servers (with lspconfig)
