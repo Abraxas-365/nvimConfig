@@ -195,4 +195,14 @@ augroup END
     },
     config = true,
   },
+
+  -- Add nvim-ts-autotag setup (init.lua or treesitter.lua)
+  {
+    "windwp/nvim-ts-autotag",
+    event = "InsertEnter", -- lazy load on InsertEnter
+    config = function()
+      require("nvim-ts-autotag").setup() -- Proper setup for nvim-ts-autotag
+    end,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
 }

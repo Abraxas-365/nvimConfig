@@ -27,15 +27,14 @@ return {
       sources = {
         formatting.prettier.with({
           condition = function(utils)
-            return
-              -- utils.root_has_file(".prettierrc")
-              utils.root_has_file(".prettierrc.js")
-                or utils.root_has_file("prettier.config.js")
-                or utils.root_has_file(".prettierrc.json")
-                or utils.root_has_file(".prettierrc.yaml")
-                or utils.root_has_file(".prettierrc.yml")
-                or utils.root_has_file(".prettierrc.toml")
-            -- or utils.root_has_file("package.json")
+            return utils.root_has_file(".prettierrc")
+              or utils.root_has_file(".prettierrc.js")
+              or utils.root_has_file("prettier.config.js")
+              or utils.root_has_file(".prettierrc.json")
+              or utils.root_has_file(".prettierrc.yaml")
+              or utils.root_has_file(".prettierrc.yml")
+              or utils.root_has_file(".prettierrc.toml")
+              or utils.root_has_file("package.json")
           end,
           filetypes = {
             "html",
