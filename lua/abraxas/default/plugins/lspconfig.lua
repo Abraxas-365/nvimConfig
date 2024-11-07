@@ -132,7 +132,7 @@ return {
     })
 
     -- configure typescript server with plugin
-    lspconfig["tsserver"].setup({
+    lspconfig["ts_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
@@ -289,27 +289,27 @@ augroup END
     })
 
     --c# Quitar estooooooo apenas pueda irme de esto
-    local omnisharp_extended = require("omnisharp_extended")
-    local pid = vim.fn.getpid()
-    lspconfig["omnisharp"].setup({
-      cmd = {
-        "/Users/abraxas/.local/share/nvim/mason/bin/omnisharp",
-        "--languageserver",
-        "--hostPID",
-        tostring(pid),
-      },
-      capabilities = capabilities,
-      on_attach = on_attach,
-      handlers = {
-        ["textDocument/definition"] = require("omnisharp_extended").handler,
-      },
-    })
-    vim.cmd([[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePre *.cs lua vim.lsp.buf.format()
-augroup END
-]])
+    --     local omnisharp_extended = require("omnisharp_extended")
+    --     local pid = vim.fn.getpid()
+    --     lspconfig["omnisharp"].setup({
+    --       cmd = {
+    --         "/Users/abraxas/.local/share/nvim/mason/bin/omnisharp",
+    --         "--languageserver",
+    --         "--hostPID",
+    --         tostring(pid),
+    --       },
+    --       capabilities = capabilities,
+    --       on_attach = on_attach,
+    --       handlers = {
+    --         ["textDocument/definition"] = require("omnisharp_extended").handler,
+    --       },
+    --     })
+    --     vim.cmd([[
+    -- augroup FormatAutogroup
+    --   autocmd!
+    --   autocmd BufWritePre *.cs lua vim.lsp.buf.format()
+    -- augroup END
+    -- ]])
 
     lspconfig["clangd"].setup({
       capabilities = capabilities,
@@ -338,11 +338,11 @@ augroup CFormatAutogroup
 augroup END
 ]])
 
-    --php
-    lspconfig["intelephense"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    -- --php
+    -- lspconfig["intelephense"].setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    -- })
 
     -- configure lua server (with special settings)
     lspconfig["lua_ls"].setup({
