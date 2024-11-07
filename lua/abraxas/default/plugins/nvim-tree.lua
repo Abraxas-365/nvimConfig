@@ -11,7 +11,8 @@ return {
     vim.g.loaded = 1
     vim.g.loaded_netrwPlugin = 1
 
-    -- change color for arrows in tree to light blue
+    -- enable 24-bit RGB color in the TUI
+    vim.opt.termguicolors = true
 
     -- configure nvim-tree
     nvimtree.setup({
@@ -28,7 +29,6 @@ return {
             col = 1,
           },
         },
-
         adaptive_size = true,
       },
       renderer = {
@@ -106,5 +106,13 @@ return {
         keymap.set("n", "Y", api.fs.copy.relative_path, opts("Copy Relative Path"))
       end,
     })
+
+    -- Set nvim-tree highlight groups to transparent
+    -- vim.cmd([[
+    --   highlight NvimTreeNormal guifg=NONE guibg=NONE
+    --   highlight NvimTreeNormalNC guifg=NONE guibg=NONE
+    --   highlight NvimTreeEndOfBuffer guifg=NONE guibg=NONE
+    --   highlight NvimTreeVertSplit guifg=NONE guibg=NONE
+    -- ]])
   end,
 }

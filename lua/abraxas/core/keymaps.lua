@@ -6,8 +6,6 @@ vim.o.foldenable = true
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true
 vim.g.copilot_tab_fallback = ""
-keymap.set("n", "zR", require("ufo").openAllFolds)
-keymap.set("n", "zM", require("ufo").closeAllFolds)
 keymap.set("n", "<leader>fs", ":w<CR>")
 keymap.set("n", "<leader>,<CR>", "<C-^>")
 --random

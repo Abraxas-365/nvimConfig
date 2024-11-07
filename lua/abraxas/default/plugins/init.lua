@@ -14,6 +14,8 @@ augroup END
 ]])
 
       vim.cmd("colorscheme gruvbox")
+
+      -- Set nvim-tree highlight groups to transparent
     end,
   },
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
@@ -143,6 +145,12 @@ augroup END
           return { "treesitter", "indent" }
         end,
       })
+
+      -- Key mappings for folds
+      vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+      vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+      vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+      vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
     end,
   },
   {
