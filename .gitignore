@@ -17,3 +17,4 @@ plugin/packer_compiled.lua
 
 # Packer installation directory
 pack/
+db_ui/

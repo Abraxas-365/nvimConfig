@@ -20,6 +20,7 @@ return {
     "hrsh7th/cmp-nvim-lsp", -- for autocompletion
     -- additional functionality for typescript server (e.g. rename file & update imports)
     "onsails/lspkind.nvim", -- vs-code like icons for autocompletion
+    "kristijanhusak/vim-dadbod-completion", -- add this line for dadbod completion
   },
   config = function()
     -- import nvim-cmp plugin safely
@@ -44,6 +45,7 @@ return {
       copilot = "[COP]",
       path = "[Path]",
       luasnip = "[SNP]",
+      vim_dadbod_completion = "[DB]", -- add this line for dadbod mapping
     }
     -- load vs-code like snippets from plugins (e.g. friendly-snippets)
     require("luasnip/loaders/from_vscode").lazy_load()
@@ -77,6 +79,7 @@ return {
         { name = "luasnip", max_item_count = 10, score = 3 }, -- snippets
         { name = "buffer", max_item_count = 10 }, -- text within current buffer
         { name = "path" }, -- file system paths
+        { name = "vim-dadbod-completion" }, -- add this line for dadbod source
       }),
       -- -- configure lspkind for vs-code like icons
       formatting = {
@@ -96,6 +99,19 @@ return {
       window = {
         completion = { pumheight = 5 },
       },
+    })
+
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "sql", "mysql", "plsql", "pgsql", "postgres", "postgresql" },
+      callback = function()
+        cmp.setup.buffer({
+          sources = {
+            { name = "vim-dadbod-completion" },
+            { name = "buffer" },
+            { name = "luasnip" },
+          },
+        })
+      end,
     })
 
     vim.g.copilot_no_tab_map = true

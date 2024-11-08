@@ -38,12 +38,6 @@ return {
   },
 
   {
-    "folke/tokyonight.nvim",
-    opts = {},
-  },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-
-  {
     "maxmx03/solarized.nvim",
     priority = 1000,
   },
@@ -59,7 +53,6 @@ return {
     end,
   },
   "nvim-lua/plenary.nvim",
-  "Hoffs/omnisharp-extended-lsp.nvim",
 
   "nvim-telescope/telescope-ui-select.nvim",
   {
@@ -177,5 +170,29 @@ return {
       "nvim-lua/plenary.nvim",
     },
     config = true,
+  },
+
+  {
+    "kristijanhusak/vim-dadbod-completion",
+    ft = { "sql", "mysql", "plsql" },
+  },
+  {
+    "tpope/vim-dadbod",
+    cmd = { "DB", "DBUI" },
+  },
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    cmd = { "DBUI" },
+    dependencies = {
+      "tpope/vim-dadbod",
+      {
+        "kristijanhusak/vim-dadbod-completion",
+        ft = { "sql", "mysql", "plsql" },
+      },
+    },
+    init = function()
+      vim.g.db_ui_use_nerd_fonts = 1
+      vim.g.db_ui_save_location = "~/.config/nvim/db_ui"
+    end,
   },
 }
