@@ -108,11 +108,7 @@ return {
     })
 
     -- Set nvim-tree highlight groups to transparent
-    -- vim.cmd([[
-    --   highlight NvimTreeNormal guifg=NONE guibg=NONE
-    --   highlight NvimTreeNormalNC guifg=NONE guibg=NONE
-    --   highlight NvimTreeEndOfBuffer guifg=NONE guibg=NONE
-    --   highlight NvimTreeVertSplit guifg=NONE guibg=NONE
-    -- ]])
+    vim.cmd([[
+    ]])
   end,
 }
